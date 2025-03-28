@@ -28,7 +28,6 @@ public class FavoriteController {
 		int idUser = userDetails.getIdUser();
 		favoriteService.addFavorite(idUser, idMovie);
 		
-	    // Redirect to refresh the movie details with updated favorite status
 	    return "redirect:/user/getMovieDetails?idMovie=" + idMovie;
 	}
 
@@ -47,7 +46,6 @@ public class FavoriteController {
 		int idUser = userDetails.getIdUser();
 		favoriteService.removeMovieFromFavorites(idUser, idMovie);
 		
-		// Redirect to refresh the movie details with updated favorite status
 		return "redirect:/user/getMovieDetails?idMovie=" + idMovie;
 	}
 	

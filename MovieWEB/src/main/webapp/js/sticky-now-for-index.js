@@ -15,7 +15,6 @@ const obs = new IntersectionObserver(
     }
   },
   {
-    // In the viewport
     root: null,
     threshold: 0,
     rootMargin: "-80px",

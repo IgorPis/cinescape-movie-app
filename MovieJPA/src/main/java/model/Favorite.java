@@ -29,13 +29,11 @@ public class Favorite implements Serializable {
 	//bi-directional many-to-one association to AppUser
 	@ManyToOne
 	@JoinColumn(name="idUser")
-//	@JsonManagedReference NE TREBA KOD MANY TO MANY
 	private AppUser appUser;
 
 	//bi-directional many-to-one association to Movie
 	@ManyToOne
 	@JoinColumn(name="idMovie")
-//	@JsonManagedReference NE TREBA KOD MANY TO MANY
 	private Movie movie;
 
 	public Favorite() {

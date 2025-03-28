@@ -91,28 +91,21 @@ public class MovieService {
 
 
     public Movie updateMovieById(int idMovie, String title, int duration, String description, int releaseYear, String trailerKey, MultipartFile posterPath, int idGenre, int idLang) throws IOException {
-        // Fetch existing movie from the database
         Movie existingMovie = movieRepo.findById(idMovie).orElseThrow(() -> new RuntimeException("Movie not found"));
 
-        // Check if a new file has been uploaded
         if (posterPath != null && !posterPath.isEmpty()) {
-            // Get the file name
             String fileName = posterPath.getOriginalFilename();
-            // Create the directory if it doesn't exist
             File directory = new File(movieUploadDir);
             if (!directory.exists()) {
                 directory.mkdirs();
             }
-            // Create the file on server
             File serverFile = new File(directory.getAbsolutePath() + File.separator + fileName);
             posterPath.transferTo(serverFile);
 
-            // Update the image path in the database
             String imagePath = "/CineScape/imgMovies/" + fileName;
             existingMovie.setPosterPath(imagePath);
         }
 
-        // Update other movie details
         Genre genre = genreRepo.findById(idGenre).orElseThrow(() -> new RuntimeException("Genre not found"));
         Language language = languageRepo.findById(idLang).orElseThrow(() -> new RuntimeException("Language not found"));
 
@@ -124,10 +117,8 @@ public class MovieService {
         existingMovie.setGenre(genre);
         existingMovie.setLanguage(language);
 
-        // Save the updated movie
         movieRepo.save(existingMovie);
 
-        // Return the updated movie
         return existingMovie;
     }
 

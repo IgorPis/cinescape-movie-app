@@ -56,13 +56,11 @@ public class Movie implements Serializable {
 	//bi-directional many-to-one association to Genre
 	@ManyToOne
 	@JoinColumn(name="idGenre")
-//	@JsonManagedReference DA BI RADIO METOD GDE SALJEM JSON FILE
 	private Genre genre;
 
 	//bi-directional many-to-one association to Language
 	@ManyToOne
 	@JoinColumn(name="idLanguage")
-//	@JsonManagedReference DA BI RADIO METOD GDE SALJEM JSON FILE
 	private Language language;
 
 	//bi-directional many-to-one association to Favorite

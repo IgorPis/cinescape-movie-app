@@ -26,7 +26,6 @@ public class UserDetailsImpl implements UserDetails{
 	}
 	
     public String getRoleDisplayName() {
-        // Utility method to return role without ROLE_ prefix
         return appUser.getRole().getRole();
     }
     

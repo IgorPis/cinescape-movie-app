@@ -1,16 +1,7 @@
-//! NOTE ZA JS: Ako jedna funkcija ne radi, onda funkcija posle nje takođe nece raditi
-
 //*********** SET CURRENT YEAR *****************/
 const yearEl = document.querySelector(".year");
 const currentYear = new Date().getFullYear();
 yearEl.textContent = currentYear;
-//*********************************************/
-
-//* STICKY NAV FOR ALL PAGES EXCEPT INDEX PAGE
-// window.addEventListener("scroll", function () {
-//   // document.body.classList.toggle("sticky", window.scrollY > 96);
-//   document.body.classList.toggle("sticky", window.scrollY > 0);
-// });
 //*********************************************/
 
 //*********** DROP DOWN MENU *****************/
@@ -27,7 +18,6 @@ profileImgEl.addEventListener("click", function () {
 //*********** LOG OUT POP UP *****************/
 
 function showLogoutModal() {
-    // Prevent the default action to avoid logging out immediately
     event.preventDefault();
     document.getElementById("logoutModal").style.display = "block";
 }
@@ -37,11 +27,9 @@ function closeLogoutModal() {
 }
 
 function proceedToLogout() {
-    // Only proceed to logout when "Yes" is clicked
     window.location.href = "/CineScape/auth/custom-logout";
 }
 
-// Close the modal when clicking outside of it
 window.onclick = function(event) {
     const modal = document.getElementById("logoutModal");
     if (event.target == modal) {
@@ -78,7 +66,6 @@ function proceedToDeleteMovie() {
     document.getElementById("deleteMovieForm").submit();
 }
 
-// Close the modal when clicking outside of it
 window.onclick = function(event) {
     if (event.target.classList.contains('modal')) {
         closeDeleteUserModal();

@@ -82,33 +82,27 @@ public class ObicanControler {
     public String getTop10Movies(HttpServletRequest request) {
         List<Movie> top10Movies = mr.findTop10ByViews(PageRequest.of(0, 10));
         request.setAttribute("top10Movies", top10Movies);
-        return "MostPopular"; // Return the view name
+        return "MostPopular"; 
     }
 	
 	
 	  @PostMapping("saveMovieImg")
 	    public String saveMovieImg(@RequestParam("posterPath") MultipartFile posterPath, String title,
 	    		int idGenre, int idLang, HttpServletRequest request) {
-	        // Check if the file is not empty
 	        if (posterPath.isEmpty()) {
 	            return "File is empty";
 	        }
 
 	        try {
-	            // Get the file name
 	            String fileName = posterPath.getOriginalFilename();
-	            // Define the directory to save the file
 	            String uploadDir = "src/main/resources/static/imgMovies/";
-	            // Create the directory if it doesn't exist
 	            File directory = new File(uploadDir);
 	            if (!directory.exists()) {
 	                directory.mkdirs();
 	            }
-	            // Create the file on server
 	            File serverFile = new File(directory.getAbsolutePath() + File.separator + fileName);
 	            posterPath.transferTo(serverFile);
 	            
-	            // Save the path to the image in the database
 	            String imagePath = "/Movie/imgMovies/" + fileName;
 	            Genre g = gr.findById(idGenre).get();
 	            Language l = lr.findById(idLang).get();

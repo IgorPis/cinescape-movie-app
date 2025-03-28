@@ -96,7 +96,6 @@
           </li>
         <c:choose>
             <c:when test="${not empty loggedUser}">
-                <!-- User is logged in, show profile and hide sign-up link -->
                 <li class="li-sign-up" style="display: none;">
                     <a class="main-nav-link nav-sign-up" href="/CineScape/auth/getAllRoles">Sign up</a>
                 </li>
@@ -149,13 +148,11 @@
                 </li>
             </c:when>
             <c:otherwise>
-                <!-- User is not logged in, show sign-up link and hide profile -->
                 <li class="li-sign-up">
                     <a class="main-nav-link nav-sign-up" href="/CineScape/auth/getAllRoles">Sign up</a>
                 </li>
                 <li class="li-profile" style="display: none;">
                     <div class="account-dropdown-button">
-                        <!-- Profile info is hidden when not logged in -->
                     </div>
                 </li>
             </c:otherwise>
@@ -167,7 +164,6 @@
 	<main>
 	    <section class="section-movies" id="movies">
 	        <div class="movie-heading-box search-heading-box">
-	            <!-- Show the search query and results heading -->
 	            <h2 class="heading-movies">
 	                Search Results For: "${searchQuery}"
 	            </h2>
@@ -178,7 +174,6 @@
 			</c:if>
 	
 	        <div class="movies-container">
-	            <!-- If the movie is found, show the movie card -->
 	            <c:if test="${!empty movieByTitle}">
 	                <div class="movie-card">
 	                    <a class="movie-details-link" data-movie-id="${movieByTitle.idMovie}" href="/CineScape/user/getMovieDetails?idMovie=${movieByTitle.idMovie}">
@@ -187,7 +182,6 @@
 	                </div>
 	            </c:if>
 	
-	            <!-- If no movie is found, display all movies -->
 	            <c:if test="${!empty MovieNotFoundMsg}">
 	                <c:forEach var="movie" items="${allMovies}">
 	                    <div class="movie-card">

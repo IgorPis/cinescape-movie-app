@@ -55,32 +55,25 @@ public class UserService {
 	public AppUser updateUserById(int idUser, String firstName, String lastName, String username, String password, MultipartFile imagePath) throws IOException {
 	    AppUser user = userRepo.findById(idUser).orElseThrow(() -> new RuntimeException("User not found"));
 
-	    // Check if the username already exists and is not the current user's username
 	    Optional<AppUser> existingUser = userRepo.findByUsername(username);
 	    if (existingUser.isPresent() && existingUser.get().getIdUser() != idUser) {
 	        throw new RuntimeException("Username already exists. Please choose a different username.");
 	    }
 
-	    // Check if a new image is provided
 	    String picturePath;
 	    if (imagePath != null && !imagePath.isEmpty()) {
-	        // Get the file name
 	        String fileName = imagePath.getOriginalFilename();
-	        // Create the directory if it doesn't exist
 	        File directory = new File(userUploadDir);
 	        if (!directory.exists()) {
 	            directory.mkdirs();
 	        }
-	        // Create the file on the server
 	        File serverFile = new File(directory.getAbsolutePath() + File.separator + fileName);
 	        imagePath.transferTo(serverFile);
 	        picturePath = "/CineScape/imgUsers/" + fileName;
 	    } else {
-	        // Use existing image path if no new file was provided
 	        picturePath = user.getImagePath() != null ? user.getImagePath() : "/CineScape/imgUsers/default.jpg";
 	    }
 
-	    // Update user details
 	    user.setFirstName(firstName);
 	    user.setLastName(lastName);
 	    user.setUsername(username);
@@ -123,7 +116,6 @@ public class UserService {
 	    Comment comment = commentRepo.findById(idComment)
 	            .orElseThrow(() -> new RuntimeException("Comment not found"));
 
-	    // Allow deletion if the user is an admin or if the user owns the comment
 	    if (isAdmin || comment.getAppUser().getIdUser() == idUser) {
 	        commentRepo.delete(comment);
 	        return "Comment deleted successfully";

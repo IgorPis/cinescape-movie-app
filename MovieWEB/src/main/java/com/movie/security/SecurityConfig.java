@@ -27,7 +27,6 @@ public class SecurityConfig {
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
                 .requestMatchers("/fav/**").hasAnyRole("USER", "ADMIN")
-//                .anyRequest().authenticated()
                 .anyRequest().permitAll()
             )
             .formLogin(formLogin -> formLogin
@@ -39,10 +38,10 @@ public class SecurityConfig {
                 .defaultSuccessUrl("/home/getAllMovies", true)
             )
             .logout(logout -> logout
-                    .logoutUrl("logout") // URL to trigger logout
-                    .logoutSuccessUrl("/auth/login?logout=success") // Redirect URL after logout
-                    .invalidateHttpSession(true) // Invalidate the session
-                    .deleteCookies("JSESSIONID") // Delete session cookies
+                    .logoutUrl("logout") 
+                    .logoutSuccessUrl("/auth/login?logout=success") 
+                    .invalidateHttpSession(true) 
+                    .deleteCookies("JSESSIONID") 
                 )
             .exceptionHandling(exceptionHandling -> exceptionHandling
                     .authenticationEntryPoint((request, response, authException) -> {
@@ -66,23 +65,5 @@ public class SecurityConfig {
     public AuthenticationFailureHandler customAuthenticationFailureHandler() {
         return new CustomAuthenticationFailureHandler();
     }
-	
-	
-//  NE TREBAJU MI JER IH SPRING AUTOMATSKI DETEKTUJE BEZ DA IH EXPLICITNO NAVODIM
-//	@Autowired
-//	private CustomUserDetailsService userDetailsService;
-//  
-//	@Bean
-//	public UserDetailsService userDetailsService() {
-//		return userDetailsService;
-//	}
-//	NE TREBAJU MI JER IH SPRING AUTOMATSKI DETEKTUJE BEZ DA IH EXPLICITNO NAVODIM
-//	@Bean
-//	public AuthenticationProvider authenticationProvider() {
-//		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-//		provider.setUserDetailsService(userDetailsService);
-//		provider.setPasswordEncoder(passwordEncoder());
-//		return provider;
-//	}
 	
 }

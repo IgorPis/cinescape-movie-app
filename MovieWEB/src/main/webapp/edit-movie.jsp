@@ -97,7 +97,6 @@
           </li>
         <c:choose>
             <c:when test="${not empty loggedUser}">
-                <!-- User is logged in, show profile and hide sign-up link -->
                 <li class="li-sign-up" style="display: none;">
                     <a class="main-nav-link nav-sign-up" href="/CineScape/auth/getAllRoles">Sign up</a>
                 </li>
@@ -150,13 +149,11 @@
                 </li>
             </c:when>
             <c:otherwise>
-                <!-- User is not logged in, show sign-up link and hide profile -->
                 <li class="li-sign-up">
                     <a class="main-nav-link nav-sign-up" href="/CineScape/auth/getAllRoles">Sign up</a>
                 </li>
                 <li class="li-profile" style="display: none;">
                     <div class="account-dropdown-button">
-                        <!-- Profile info is hidden when not logged in -->
                     </div>
                 </li>
             </c:otherwise>
@@ -236,11 +233,6 @@
                     <label for="poster">Poster image</label>
                     <input id="poster" type="file" name="posterPath" />
                   </div>
-
-                  <!-- <div>
-                    <label for="backdrop">Backdrop image</label>
-                    <input id="backdrop" type="file" name="backdropPath" />
-                  </div> -->
 
                   <div>
                     <label for="select-genre">Current Genre: ${movieById.genre.name}</label>

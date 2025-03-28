@@ -48,7 +48,6 @@ public class AuthController {
        return "redirect:/auth/login?logout=success";
    }
     
-  //FINAL REGISTRATION
     @PostMapping("register")
     public String registerUser(HttpServletRequest request, @RequestParam String firstName, @RequestParam String lastName, 
     		@RequestParam String username, @RequestParam String password, 
@@ -70,82 +69,4 @@ public class AuthController {
         return "sign-up";
     }
     
-////////////
-    
-//NAVODNO OVO NECE BITI POTREBNO JER CE SE LOGOUT RADITI NA FRONTU GDE CEMO SAMO OBRISATI TOKEN OD USERA SA LOCAL STORAGE(STORAGE U BROWSERU)
-//    @PostMapping("/logout")
-//    public ResponseEntity<?> logout(@RequestHeader("Authorization") String token) {
-//        if (StringUtils.hasText(token) && token.startsWith("Bearer ")) {
-//            String jwt = token.substring(7);
-//            tokenBlacklistService.blacklistToken(jwt);
-//            logger.info("JWT token blacklisted: {}", jwt);
-//            return ResponseEntity.ok("Successfully logged out");
-//        }
-//        logger.warn("Invalid token for logout: {}", token);
-//        return ResponseEntity.badRequest().body("Invalid token");
-//    }
-	
-//	GENUINE CODER TUTORIAL
-//	@PostMapping("register/user")
-//	public ResponseEntity<String> createUser(@RequestBody RegisterDto registerDto) {
-//		if(userRepo.existsByUsername(registerDto.getUsername())) {
-//			return new ResponseEntity<String>("Username is taken", HttpStatus.BAD_REQUEST);
-//		}
-//		AppUser user = new AppUser();
-//		user.setUsername(registerDto.getUsername());
-//		user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
-//		Role role = roleRepo.findById(registerDto.getIdRole()).get();
-//		user.setRole(role);
-//		userRepo.save(user);
-//		return new ResponseEntity<>("User registered success", HttpStatus.OK);
-//	}
-	
-//	@PostMapping("login/user")
-//	public String authenticateAndGetToken(@RequestBody LoginDto loginDto) {
-//		Authentication authentication = authenticationManager.authenticate(
-//				new UsernamePasswordAuthenticationToken(
-//				loginDto.getUsername(), loginDto.getPassword()));
-//		if(authentication.isAuthenticated()) {
-//			return jwtService.generateToken(customUserDetailsService.loadUserByUsername(loginDto.getUsername()));
-//		} else {
-//			throw new UsernameNotFoundException("Invalid credentials.");
-//		}
-//	}
-	
-//	CODE ENDS
-	
-	
-	
-
-	
-//    @PostMapping("login1")
-//	public ResponseEntity<AuthResponseDto> login(@RequestBody LoginDto loginDto) {
-//		Authentication authentication = authenticationManager.authenticate(
-//				new UsernamePasswordAuthenticationToken(
-//				loginDto.getUsername(), 
-//				loginDto.getPassword()));
-//		SecurityContextHolder.getContext().setAuthentication(authentication);
-//		String token = jwtService.generateToken(customUserDetailsService.loadUserByUsername(loginDto.getUsername()));
-//		return new ResponseEntity<>(new AuthResponseDto(token), HttpStatus.OK);
-//		
-//	}
-	
-//	@PostMapping("register")
-//	public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
-//		if(userRepo.existsByUsername(registerDto.getUsername())) {
-//			return new ResponseEntity<String>("Username is taken", HttpStatus.BAD_REQUEST);
-//		}
-//		
-//		AppUser user = new AppUser();
-//		user.setUsername(registerDto.getUsername());
-//		user.setPassword(passwordEncoder.encode((registerDto.getPassword())));
-//		
-//		Role role = roleRepo.findById(registerDto.getIdRole()).get();
-//		user.setRole(role);
-//		userRepo.save(user);
-//		
-//		return new ResponseEntity<>("User registered success", HttpStatus.OK);
-//		
-//	}
-	
 }

@@ -18,7 +18,6 @@ public class AuthenticationSuccessListener implements ApplicationListener<Authen
         if (authentication != null && authentication.getPrincipal() instanceof UserDetailsImpl) {
         	UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 
-            // Store user ID in the session
             HttpSession session = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getSession();
             session.setAttribute("loggedUser", userDetails);
         }

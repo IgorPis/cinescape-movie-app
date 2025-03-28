@@ -81,7 +81,6 @@ public class AdminController {
 			Movie updatedMovie = movieService.updateMovieById(idMovie, title, duration, description, releaseYear,
 					trailerKey, posterPath, idGenre, idLang);
 
-			// Set the updated movie object in the request
 			request.setAttribute("movieById", updatedMovie);
 
 			request.setAttribute("message", "Movie updated successfully!");
@@ -140,56 +139,47 @@ public class AdminController {
 	                             @RequestParam String firstName, @RequestParam String lastName,
 	                             @RequestParam String username, @RequestParam String password,
 	                             @RequestParam MultipartFile imagePath) {
-	    AppUser targetUser = null; // Initialize the target user
+	    AppUser targetUser = null; 
 
 	    try {
-	        // Retrieve the authenticated user's details
 	        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 	        Object principal = authentication.getPrincipal();
 
-	        // Check if the principal is an instance of UserDetailsImpl
 	        if (principal instanceof UserDetailsImpl) {
 	            UserDetailsImpl userDetails = (UserDetailsImpl) principal;
 	            AppUser authenticatedUser = userDetails.getAppUser();
 
-	            // Retrieve the target user by ID
 	            targetUser = userService.getUserById(idUser);
 
-	            // Prevent editing of other admin profiles
 	            if (targetUser.getRole().getRole().equals("ADMIN") && authenticatedUser.getIdUser() != idUser) {
 	                String message = "Admins users cannot edit other admins profile.";
 	                request.setAttribute("message", message);
-	                request.setAttribute("userById", targetUser); // Ensure target user is still set
-	                return "edit-profile"; // Or redirect to an appropriate error page
+	                request.setAttribute("userById", targetUser); 
+	                return "edit-profile"; 
 	            }
 
-	            // Proceed with the update if not editing another admin
 	            AppUser updatedUser = userService.updateUserById(idUser, firstName, lastName, username, password, imagePath);
 
-	            // Set the updated user object in the request
 	            request.setAttribute("userById", updatedUser);
 	            String message = "Profile updated!";
 	            request.setAttribute("message", message);
 	        } else {
-	            // If the principal is not authenticated properly, handle as unauthorized
 	            String message = "Unauthorized action.";
 	            request.setAttribute("message", message);
-	            return "redirect:/auth/login"; // Redirect to login or handle as needed
+	            return "redirect:/auth/login"; 
 	        }
 	    } catch (RuntimeException e) {
-	        // Handle custom exception when username already exists
 	        e.printStackTrace();
 	        String message = "Username is already taken. Please choose a different username.";
 	        request.setAttribute("failMsg", message);
-	        request.setAttribute("userById", targetUser); // Set targetUser in case of an exception
+	        request.setAttribute("userById", targetUser); 
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        String message = "Failed to update profile: " + e.getMessage();
 	        request.setAttribute("failMsg", message);
-	        request.setAttribute("userById", targetUser); // Set targetUser in case of an exception
+	        request.setAttribute("userById", targetUser); 
 	    }
 
-	    // Ensure the user object is set in the request to avoid errors
 	    if (targetUser != null) {
 	        request.setAttribute("userById", targetUser);
 	    }
@@ -201,7 +191,6 @@ public class AdminController {
 
 	@PostMapping("deleteUser/{idUser}")
 	public String deleteUser(HttpServletRequest request, @PathVariable int idUser) {
-		// Get the authenticated user
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Object principal = authentication.getPrincipal();
 
@@ -209,35 +198,28 @@ public class AdminController {
 			UserDetailsImpl userDetails = (UserDetailsImpl) principal;
 			AppUser authenticatedUser = userDetails.getAppUser();
 
-			// Load the target user to be deleted
-			AppUser targetUser = userService.getUserById(idUser); // Ensure this method retrieves the user by ID
+			AppUser targetUser = userService.getUserById(idUser); 
 
-			// Check for null to avoid null pointer exceptions
 			if (authenticatedUser != null && targetUser != null) {
-				String authenticatedUserRole = authenticatedUser.getRole().getRole(); // Should be "ADMIN" for admin
-				String targetUserRole = targetUser.getRole().getRole(); // Should be "ADMIN" for admin
+				String authenticatedUserRole = authenticatedUser.getRole().getRole(); 
+				String targetUserRole = targetUser.getRole().getRole(); 
 
-				// Debugging output
 				System.out.println(
 						"Authenticated User: " + authenticatedUser.getUsername() + " | Role: " + authenticatedUserRole);
 				System.out.println("Target User: " + targetUser.getUsername() + " | Role: " + targetUserRole);
 
-				// Check if the authenticated user is trying to delete their own account
 				if (authenticatedUser.getIdUser() == idUser) {
 					System.out.println("Deleting own account...");
 					userService.deleteUserById(idUser);
 
-					// Log the user out
 					SecurityContextHolder.clearContext();
 					request.getSession().invalidate();
 
-					// Set the success message
 					request.getSession().setAttribute("accountDeletedMessage", "Account deleted successfully!");
 
 					return "redirect:/auth/login";
 				}
 
-				// Prevent admin from deleting another admin
 				if ("ADMIN".equals(authenticatedUserRole) && "ADMIN".equals(targetUserRole)) {
 					System.out.println("Admin cannot delete another admin.");
 					request.getSession().setAttribute("deleteAdminMsg",
@@ -245,7 +227,6 @@ public class AdminController {
 					return "redirect:/admin/getUserById?idUser=" + idUser;
 				}
 
-				// Admin deleting a non-admin user
 				System.out.println("Admin deleting a non-admin user.");
 				userService.deleteUserById(idUser);
 				return "redirect:/admin/getAllUsers";

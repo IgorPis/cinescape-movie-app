@@ -102,7 +102,6 @@
           </li>
         <c:choose>
             <c:when test="${not empty loggedUser}">
-                <!-- User is logged in, show profile and hide sign-up link -->
                 <li class="li-sign-up" style="display: none;">
                     <a class="main-nav-link nav-sign-up" href="/CineScape/auth/getAllRoles">Sign up</a>
                 </li>
@@ -155,13 +154,11 @@
                 </li>
             </c:when>
             <c:otherwise>
-                <!-- User is not logged in, show sign-up link and hide profile -->
                 <li class="li-sign-up">
                     <a class="main-nav-link nav-sign-up" href="/CineScape/auth/getAllRoles">Sign up</a>
                 </li>
                 <li class="li-profile" style="display: none;">
                     <div class="account-dropdown-button">
-                        <!-- Profile info is hidden when not logged in -->
                     </div>
                 </li>
             </c:otherwise>

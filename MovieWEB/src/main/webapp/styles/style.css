@@ -6,24 +6,24 @@
 
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1000; /* Sit on top */
+  display: none;
+  position: fixed; 
+  z-index: 1000; 
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* Modal Content */
 .modal-content {
   background-color: #171717;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 15% auto; 
   padding: 20px;
   border: 2px solid #737373;
-  width: fit-content; /* Could be more or less, depending on screen size */
+  width: fit-content; 
   text-align: center;
   border-radius: 9px;
   color: #f5f5f5;
@@ -101,7 +101,7 @@
   align-items: center;
   background-color: #171717;
 
-  /* Because we want header to be sticky later */
+  /* Because i want header to be sticky later */
   height: 9.6rem;
   padding: 0 4.8rem;
   position: relative;
@@ -154,13 +154,13 @@
   font-size: 1.8rem;
   letter-spacing: 0.1rem;
   font-family: inherit;
-  opacity: 0; /* Placeholder hidden by default */
-  transition: opacity 0.5s ease; /* Smooth transition */
+  opacity: 0; 
+  transition: opacity 0.5s ease; 
 }
 
-/* Show placeholder when input is focused */
+
 .input-search.focused::placeholder {
-    opacity: 1; /* Show placeholder on focus */
+    opacity: 1; 
     transition: opacity 1s ease;
 }
 
@@ -202,18 +202,18 @@
 /** SEARCH SUGGESTIONS */
 
 .suggestions {
-  position: absolute; /* Position relative to the form */
-  top: 4.5rem; /* Adjust this value based on the height of your input */
+  position: absolute; 
+  top: 4.5rem; 
   left: 6rem;
-  width: calc(100% - 7rem); /* Adjust width to match the expanded input */
+  width: calc(100% - 7rem); 
   max-height: 150px;
   overflow-y: auto;
   border: 1px solid #ccc;
   border-top: none;
   border-radius: 0 0 4px 4px;
   background-color: #fff;
-  z-index: 10; /* Ensure it appears above other elements */
-  display: none; /* Initially hidden */
+  z-index: 10; 
+  display: none; 
   font-size: 1.6rem;
   font-weight: 500;
   scrollbar-width: thin;
@@ -236,11 +236,6 @@
   background-color: #f0f0f0;
 }
 
-/* Show suggestions when input is focused */
-/* .input-search:focus + .suggestions,
-.suggestions:focus {
-  display: block;
-} */
 
 /*************************/
 
@@ -295,11 +290,8 @@
 
 .logged-in {
   display: none;
-  /* 1) Hide it visually */
   opacity: 0;
-  /* 2) Make it unaccessible to mouse and keyboard */
   pointer-events: none;
-  /* 3) Hide it from screen readers */
   visibility: hidden;
 }
 
@@ -466,20 +458,6 @@
 /*   font-size: 1.8rem; */
   transition: all 0.3s;
 }
-
-/* .sticky .main-nav-link:hover,
-.sticky .main-nav-link:active {
-  color: #b91c1c;
-} */
-
-/* .sticky .main-nav-link.nav-sign-up:link,
-.sticky .main-nav-link.nav-sign-up:visited {
-  color: #fff;
-} */
-
-/* .sticky .input-search {
-  border: 1px solid #dc2626;
-} */
 
 /*****STICKY NAV END*******/
 

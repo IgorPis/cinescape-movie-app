@@ -25,7 +25,6 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
 		if (exception instanceof BadCredentialsException) {
 			String username = request.getParameter("username");
 			try {
-				// Check if the username exists
 				if (username != null && userService.loadUserByUsername(username) != null) {
 					errorMessage = "Incorrect password.";
 				} else {
@@ -38,21 +37,8 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
 			errorMessage = "Incorrect username.";
 		}
 
-		// Store the error message in the session
 		request.getSession().setAttribute("errorMessage", errorMessage);
-		// Redirect to the login page with error parameter
 		response.sendRedirect(request.getContextPath() + "/auth/login?error=true");
 	}
-	
-//	@Override
-//  public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-//      String errorMessage = "Invalid credentials.";
-//      if (exception.getMessage().contains("username")) {
-//          errorMessage = "Incorrect username.";
-//      } else if (exception.getMessage().contains("password")) {
-//          errorMessage = "Incorrect password.";
-//      }
-//      request.getSession().setAttribute("errorMessage", errorMessage);
-//      response.sendRedirect(request.getContextPath() + "/auth/login?error=true");
-//  }
+
 }

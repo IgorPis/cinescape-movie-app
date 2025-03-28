@@ -42,18 +42,13 @@ public class UserController {
     public String getMovieById(@RequestParam int idMovie, HttpServletRequest request) {
     	try {
 			Movie movie = movieService.findMovieById(idMovie);
-			// Format duration to show hours and minutes
 			String formattedDuration = movieService.convertMinutesToHours(movie.getDuration());
-			// Get list of comments for movie
 			List<Comment> comments = userService.getCommentsOfMovie(movie);
 
-			// Increase the views value
 			movieService.updateMovieViews(movie);
-			// Get genre of the movie
 			Genre genre = movie.getGenre();
 			int idGenre = genre.getIdGenre();
 			List<Movie> moviesByGenre = movieService.filterMoviesByGenre(idGenre);
-			// Remove the current movie from the list and limit to 3
 			moviesByGenre.remove(movie);
 			if (moviesByGenre.size() >= 6) {
 			    moviesByGenre = moviesByGenre.subList(0, 6);
@@ -74,13 +69,11 @@ public class UserController {
 				request.setAttribute("comments", comments);
 			}
 			
-		    // Check if the movie is in the user's favorites
             UserDetailsImpl userDetails = (UserDetailsImpl) request.getSession().getAttribute("loggedUser");
             AppUser appUser = userDetails.getAppUser();
             boolean isFavorite = favoriteService.isFavoriteMovie(appUser, movie);
             request.setAttribute("isFavorite", isFavorite);
             
-            // Get user role
             String userRole = "USER";
             if (userDetails != null) {
                 userRole = userDetails.getRoleDisplayName();
@@ -99,29 +92,23 @@ public class UserController {
 	public String updateUserByID(HttpServletRequest request, @RequestParam String firstName, @RequestParam String lastName, 
 	                             @RequestParam String username, @RequestParam String password, 
 	                             @RequestParam MultipartFile imagePath) {
-	    // Retrieve the UserDetailsImpl from the session
 	    UserDetailsImpl userDetails = (UserDetailsImpl) request.getSession().getAttribute("loggedUser");
 
 	    if (userDetails == null) {
-	        // Handle case where userDetails is null, possibly redirect to login page
 	        return "redirect:/auth/login";
 	    }
 
 	    int idUser = userDetails.getIdUser();
 	    try {
-	        // Update the user and retrieve the updated AppUser
 	        AppUser updatedUser = userService.updateUserById(idUser, firstName, lastName, username, password, imagePath);
 
-	        // Create a new UserDetailsImpl with the updated AppUser
 	        UserDetailsImpl updatedUserDetails = new UserDetailsImpl(updatedUser);
 
-	        // Set the updated UserDetailsImpl object in the session
 	        request.getSession().setAttribute("loggedUser", updatedUserDetails);
 
 	        String message = "Profile updated!";
 	        request.setAttribute("message", message);
 	    } catch (RuntimeException e) {
-	        // Handle custom exception when username already exists
 	        e.printStackTrace();
 	        String message = "Username is already taken. Please choose a different username.";
 	        request.setAttribute("failMsg", message);
@@ -150,7 +137,6 @@ public class UserController {
 	    boolean isAdmin = ((AbstractAuthenticationToken) principal).getAuthorities().stream()
 	                            .anyMatch(role -> role.getAuthority().equals("ROLE_ADMIN"));
 	    userService.deleteComment(idComment, idUser, isAdmin);
-	    // Redirect back to the movie page
 	    return "redirect:/user/getMovieDetails?idMovie=" + idMovie;
 	}
 

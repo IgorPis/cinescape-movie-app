@@ -5,7 +5,6 @@ function formatDate(dateString) {
         year: 'numeric'
     };
     const date = new Date(dateString);
-    // Format date as dd.MM.yyyy and add a period at the end
     return date.toLocaleDateString('en-GB', options).replace(/\//g, '.') + '.';
 }
 

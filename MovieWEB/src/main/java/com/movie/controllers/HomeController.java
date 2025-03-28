@@ -55,23 +55,18 @@ public class HomeController {
     @GetMapping("getByTitle")
     public String getMovieByTitle(@RequestParam String title, HttpServletRequest request) {
         try {
-            // Trim and set the search query in the request to display in the view
             title = title.trim();
             request.setAttribute("searchQuery", title);
 
-            // Try to find the movie by title
             Movie movie = movieService.getMovieByTitle(title);
             request.setAttribute("movieByTitle", movie);
         } catch (Exception e) {
-            // Log the error
             e.printStackTrace();
 
-            // Set a message and the search query
             String msg = "Movie not found";
             request.setAttribute("MovieNotFoundMsg", msg);
             request.setAttribute("searchQuery", title);
 
-            // Fetch all movies to display when the search fails
             List<Movie> allMovies = movieService.getAllMovies();
             request.setAttribute("allMovies", allMovies);
         }
@@ -148,16 +143,5 @@ public class HomeController {
         request.setAttribute("mostPopularTitle", "Top 10 Most Popular Movies");
         return "browse-gen";
     }
-    
-//  old method for searching movies, this one sorts them out by id in database
-//  @GetMapping("searchMovies")
-//  @ResponseBody
-//  public List<String> searchMovies(@RequestParam("query") String query) {
-//      List<Movie> allMovies = movieService.getAllMovies();
-//      return allMovies.stream()
-//              .map(Movie::getTitle)
-//              .filter(title -> title.toLowerCase().contains(query.toLowerCase()))
-//              .collect(Collectors.toList());
-//  }
 	
 }

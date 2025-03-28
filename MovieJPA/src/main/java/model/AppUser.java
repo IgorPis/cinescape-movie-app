@@ -50,7 +50,6 @@ public class AppUser implements Serializable {
 	private Role role;
 
 	//bi-directional many-to-one association to Comment
-	//cascade = CascadeType.REMOVE, you don't need to manually delete the comments. When you delete a user, all associated comments will be automatically deleted.
 	@OneToMany(mappedBy="appUser", cascade = CascadeType.REMOVE)
 //	@JsonBackReference
 	@JsonIgnore

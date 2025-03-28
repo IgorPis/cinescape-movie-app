@@ -96,7 +96,6 @@
           </li>
         <c:choose>
             <c:when test="${not empty loggedUser}">
-                <!-- User is logged in, show profile and hide sign-up link -->
                 <li class="li-sign-up" style="display: none;">
                     <a class="main-nav-link nav-sign-up" href="/CineScape/auth/getAllRoles">Sign up</a>
                 </li>
@@ -149,13 +148,11 @@
                 </li>
             </c:when>
             <c:otherwise>
-                <!-- User is not logged in, show sign-up link and hide profile -->
                 <li class="li-sign-up">
                     <a class="main-nav-link nav-sign-up" href="/CineScape/auth/getAllRoles">Sign up</a>
                 </li>
                 <li class="li-profile" style="display: none;">
                     <div class="account-dropdown-button">
-                        <!-- Profile info is hidden when not logged in -->
                     </div>
                 </li>
             </c:otherwise>
@@ -232,15 +229,6 @@
                     <label for="photo">Upload photo</label>
                     <input id="photo" type="file" name="imagePath" />
                   </div>
-
-                  <!-- <div>
-                    <label for="select-role">Role</label>
-                    <select id="select-role" name="select-where" required>
-                      <option value="">Please choose one option:</option>
-                      <option value="admin">Admin</option>
-                      <option value="user">User</option>
-                    </select>
-                  </div> -->
 
                   <button class="btn btn--form">Apply Changes</button>
                 </form>

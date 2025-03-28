@@ -104,7 +104,6 @@
           </li>
         <c:choose>
             <c:when test="${not empty loggedUser}">
-                <!-- User is logged in, show profile and hide sign-up link -->
                 <li class="li-sign-up" style="display: none;">
                     <a class="main-nav-link nav-sign-up" href="/CineScape/auth/getAllRoles">Sign up</a>
                 </li>
@@ -157,13 +156,11 @@
                 </li>
             </c:when>
             <c:otherwise>
-                <!-- User is not logged in, show sign-up link and hide profile -->
                 <li class="li-sign-up">
                     <a class="main-nav-link nav-sign-up" href="/CineScape/auth/getAllRoles">Sign up</a>
                 </li>
                 <li class="li-profile" style="display: none;">
                     <div class="account-dropdown-button">
-                        <!-- Profile info is hidden when not logged in -->
                     </div>
                 </li>
             </c:otherwise>
@@ -177,16 +174,6 @@
       <section class="section-movies" id="movies">
         <div class="movie-heading-box">
           <h2 class="heading-movies">Browse by Languages</h2>
-<%--           <form class="filter-box" name="" action="/CineScape/home/moviesByLanguage" method="get">
-            <div>
-              <select name="idLang" required>
-	              	<c:forEach items="${langs }" var="l">
-		                <option value="${l.idLanguage}" <c:if test="${param.idLang == l.idLanguage}">selected</c:if>>${l.name}</option>
-	                </c:forEach>
-              </select>
-            </div>
-            <button class="btn btn--filter">Select</button>
-          </form> --%>
           
           <form class="filter-box" name="" action="/CineScape/home/moviesByLanguage" method="get">
 		    <div>
