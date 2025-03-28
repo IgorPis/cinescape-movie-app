@@ -1,0 +1,374 @@
+@charset "UTF-8";
+
+.section-movie {
+  background-image: linear-gradient(to right bottom, #ef4444, #dc2626);
+  padding-bottom: 3rem;
+}
+
+.movie-container {
+  max-width: 130rem;
+  padding: 4.8rem 2rem 12.8rem;
+  margin: 0 auto;
+  background-color: #171717;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 38px, rgba(0, 0, 0, 0.22) 0px 0px 12px;
+  color: #333;
+  color: #fff;
+}
+
+.title-heading-box {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-heading {
+  font-size: 3.8rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/************BUTTON STYLES************/
+
+.btns-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.btn-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  gap: 2px;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  color: #171717;
+  border-radius: 9px;
+  font-size: 2rem;
+  font-weight: 700;
+  transition: all 0.3s;
+}
+
+.btn-box:hover,
+.del-btn:hover {
+  background-color: #d4d4d4;
+}
+
+.del-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 9px;
+  gap: 2px;
+  color: #171717;
+  background-color: #fff;
+  font-family: inherit;
+  transition: all 0.3s;
+  cursor: pointer;
+  height: 40px;
+}
+
+.del-btn p {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.edit-icon {
+  font-size: 2rem;
+  font-variation-settings: "wght" 700;
+}
+
+/******************************************/
+
+/*********** PARENT STYLES ***************/
+
+.parent {
+  height: 40rem;
+  display: flex;
+  margin-bottom: 2rem;
+  gap: 2rem;
+}
+
+.movie-poster-details {
+  display: flex;
+  gap: 2rem;
+  width: 37.4%;
+}
+
+.movie-poster img {
+  height: 100%;
+  width: 266.66px;
+  border-radius: 9px;
+}
+
+.movie-details {
+  background-color: #262626;
+  padding: 2rem;
+  height: fit-content;
+  align-self: center;
+  border-radius: 9px;
+}
+
+.list-icon {
+  color: #ef4444;
+}
+
+.movie-trailer {
+  width: 62.6%;
+}
+
+.movie-trailer iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 9px;
+}
+
+/*********************************/
+
+/*********** PARENT 2 STYLES ***************/
+
+.parent2 {
+  margin-bottom: 5rem;
+}
+
+.description {
+  font-size: 1.8rem;
+  width: 100%;
+  padding: 20px;
+  height: fit-content;
+  line-height: 1.5;
+  background-color: #262626;
+  border-radius: 9px;
+}
+
+/*********************************/
+
+.zero-comment-msg {
+  font-size: 1.7rem;
+  margin-bottom: 2rem;
+}
+
+/*********** PARENT 3 STYLES ***************/
+
+.parent3 {
+  display: flex;
+  gap: 2rem;
+  font-size: 1.8rem;
+}
+
+.comments-box {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 22rem;
+  max-height: 40rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #404040 transparent;
+  /* padding: 0 1rem 1rem; */
+  padding-bottom: 1rem;
+  padding-right: 1rem;
+  transition: all 0.5s;
+}
+
+.comments-box:hover {
+  scrollbar-color: #737373 transparent;
+}
+
+.one-comment-box {
+  padding: 15px;
+  background-color: #262626;
+  border-radius: 10px;
+  display: flex;
+  gap: 1.6rem;
+}
+
+.img-container-sm img {
+  border-radius: 50%;
+}
+
+.comment-info {
+  width: 100%;
+}
+
+.user-box {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  align-items: center;
+}
+
+.delete-comment-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.delete-comment-btn {
+  border: none;
+  font-family: inherit;
+  letter-spacing: 1px;
+  padding: 0.2rem 0.8rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border-radius: 100px;
+  font-weight: 600;
+  color: #dc2626;
+  box-shadow: inset 0px 0px 0px 1px #dc2626;
+  cursor: pointer;
+  background-color: #262626;
+  transition: all 0.5s;
+}
+
+.delete-comment-btn:hover {
+  background-color: #fff;
+  color: #262626;
+  box-shadow: inset 0px 0px 0px 1px #fff;
+}
+
+.comment-date {
+  color: #888;
+  font-size: 1.4rem;
+}
+
+.content-box {
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+.form-comment-box {
+  width: 50%;
+}
+
+.form-comment-box textarea {
+  background-color: inherit;
+  resize: none;
+  width: 100%;
+  background-color: #262626;
+  border-radius: 9px;
+  border: none;
+  font-size: 1.6rem;
+  padding: 2rem;
+  color: #fff;
+  font-family: inherit;
+  scrollbar-width: thin;
+  scrollbar-color: #737373 transparent;
+}
+
+.form-comment-box textarea:focus {
+  box-shadow: inset 0 0 2px rgb(255, 255, 255);
+}
+
+.form-comment-box textarea::placeholder {
+  color: #777;
+}
+
+.form-comment {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.comment-btn {
+  width: fit-content;
+  align-self: end;
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 50px;
+  font-family: inherit;
+  background-color: #262626;
+  color: #777;
+  transition: all 0.7s;
+  color: #717171;
+  cursor: pointer;
+}
+
+.comment-btn:hover {
+  background-color: #ef4444;
+  color: #fff;
+}
+
+/*********************************/
+
+/*********** PARENT 4 STYLES ***************/
+
+.parent4 {
+  margin-top: 10rem;
+}
+
+.secondary-heading {
+  font-size: 2.4rem;
+  margin-bottom: 4rem;
+}
+
+.movie-cards {
+  padding: 0 3rem;
+  display: flex;
+  gap: 4rem;
+
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  grid-gap: 4rem; */
+}
+
+.movie-card {
+  border-radius: 11px;
+  overflow: hidden;
+  transition: all 0.4s;
+  height: 250px;
+}
+
+.movie-card:hover {
+  opacity: 50%;
+}
+
+.movie-img {
+  display: block;
+  height: 100%;
+}
+
+/*********************************/
+
+/** STYLES FOR BOOKMARK BUTTON  */
+
+.fav-btn {
+  display: flex;
+  align-items: center;
+  /* border: 2px solid #fff; */
+  border: none;
+  border-radius: 9px;
+  padding: 6px 1px;
+  width: fit-content;
+  cursor: pointer;
+  background-color: #ef4444;
+  color: #fff;
+  transition: all 0.5s;
+}
+
+.fav-btn:hover {
+  background-color: #dc2626;
+}
+
+.bookmark-icon {
+  height: 21.59px;
+  font-size: 21.59px;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 40;
+  color: #fff;
+}
+
+.btn--text {
+  margin-right: 8.4px;
+  font-size: 1.8rem;
+  font-family: inherit;
+}
+
+/**********************************/

@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+/*************************/
+/** BELOW 1536px (Laptops) */
+/*************************/
+
+@media (max-width: 96em) {
+  .main-nav-list {
+    gap: 2.4rem;
+  }
+
+  .input-search {
+    font-size: 1.7rem;
+  }
+
+  .input-search::placeholder {
+    font-size: 1.7rem;
+  }
+
+  .main-nav-link:link,
+  .main-nav-link:visited {
+    font-size: 1.7rem;
+  }
+  
+  .input-search.expanded {
+    width: 40rem;
+  }
+  
+  .input-search:focus {
+    width: 40rem;
+  }
+}

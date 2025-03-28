@@ -1,0 +1,227 @@
+@charset "UTF-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+
+main {
+  background-image: url(../images/redweb.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.msg-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.message {
+  color: #fff;
+}
+
+/** DELETE BUTTON STYLES */
+.btns-box {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 2rem;
+}
+
+.del-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 9px;
+  gap: 2px;
+  color: #171717;
+  background-color: #fff;
+  font-family: inherit;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.del-btn:hover {
+  background-color: #d4d4d4;
+}
+
+.del-btn p {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/**************************/
+
+.section-profile {
+  padding: 0 0 12.8rem;
+  height: 81vh;
+  display: grid;
+  font-family: "Staatliches", cursive;
+
+  /* background-image: linear-gradient(to right bottom, #ef4444, #dc2626); */
+
+  color: black;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+}
+
+.section-profile.user {
+	height: 91vh;
+}
+
+.ticket {
+  margin: auto;
+  display: flex;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.left {
+  display: flex;
+}
+
+.company {
+  position: absolute;
+  color: darkgray;
+  height: 250px;
+  padding: 0 10px;
+  letter-spacing: 0.15em;
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  writing-mode: vertical-rl;
+  transform: rotate(-180deg);
+}
+
+.company span:nth-child(2) {
+  color: white;
+  font-weight: 700;
+}
+
+.ticket-info {
+  padding: 10px 30px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.role-text {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  padding: 5px 0;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.role-text span {
+  width: 100px;
+}
+
+.role-text span:first-child {
+  text-align: left;
+}
+
+.role-text span:last-child {
+  text-align: right;
+}
+
+.role-text .role {
+  color: #dc2626;
+  font-size: 20px;
+}
+
+.user-name h1,
+.user-name h2 {
+  font-size: 32px;
+  font-family: "Nanum Pen Script", cursive;
+  color: #dc2626;
+}
+
+.user-name h1 {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #4a437e;
+}
+
+.txt-sm {
+  padding: 10px 0;
+  color: #4a437e;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-weight: 700;
+}
+
+.edit-btn:link,
+.edit-btn:visited {
+  color: inherit;
+}
+
+.edit-icon {
+  font-size: 2rem;
+}
+
+.left .txt-sm {
+  font-size: 16px;
+}
+
+.location {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding-top: 8px;
+  border-top: 1px solid gray;
+}
+
+.location .separator {
+  font-size: 20px;
+}
+
+.right {
+  width: 180px;
+  border-left: 1px dashed #404040;
+}
+
+.right .company {
+  color: darkgray;
+}
+
+.right .company span:nth-child(2) {
+  color: gray;
+}
+
+.right .right-info-container {
+  height: 250px;
+  padding: 10px 10px 10px 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.right .user-name h1 {
+  font-size: 18px;
+}
+
+.img-sm {
+  height: 100px;
+}
+
+.img-sm img {
+  height: 100%;
+}
+
+.right .user-id {
+  color: gray;
+}
