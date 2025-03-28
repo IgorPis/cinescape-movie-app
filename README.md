@@ -1,3 +1,4 @@
+Images of the web app.
 ![1](https://github.com/user-attachments/assets/425ecea8-3873-4516-9cfc-02dd37002a99)
 ![2](https://github.com/user-attachments/assets/f9845745-2158-4c1e-8311-9bcea54bff90)
 ![3](https://github.com/user-attachments/assets/1afe3698-c535-4f36-8968-288165f7df42)
